@@ -16,6 +16,7 @@ Efficient rendering for large lists
 
 ```js
 var BigList = require('biglist');
+var items = []
 
 for (var i = 0; i < 30000; i++) {
     items.push(i);
