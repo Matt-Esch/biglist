@@ -67,11 +67,10 @@ function BigList(items, opts) {
             var item = items[i + aboveCount];
 
             if (!w) {
-                w = new ListItem(item, opts);
+                w = new ListItem(item, i + aboveCount, opts);
                 liWidgets[i] = w;
-
             } else {
-                w.update(item, opts);
+                w.update(item, i + aboveCount, opts);
             }
 
             if(w.root.parentNode !== root) {
