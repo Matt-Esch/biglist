@@ -33,7 +33,7 @@ function BigList(items, opts) {
 
     var bigList = this;
     var itemHeight = opts.itemHeight;
-    var heightValue = parseInt(itemHeight, 10);
+    var heightValue = parseFloat(itemHeight);
     var heightMeasure = itemHeight.substring(itemHeight.length - 2);
     var liWidgets = [];
     var ListItem = opts.itemTemplate;
