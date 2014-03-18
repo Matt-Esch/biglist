@@ -33,7 +33,7 @@ function BigList(items, opts) {
 
     var bigList = this;
     var itemHeight = opts.itemHeight;
-    var heightValue = parseInt(itemHeight, 10);
+    var heightValue = parseFloat(itemHeight);
     var heightMeasure = itemHeight.substring(itemHeight.length - 2);
     var liWidgets = [];
     var ListItem = opts.itemTemplate;
@@ -67,11 +67,10 @@ function BigList(items, opts) {
             var item = items[i + aboveCount];
 
             if (!w) {
-                w = new ListItem(item, opts);
+                w = new ListItem(item, i + aboveCount, opts);
                 liWidgets[i] = w;
-
             } else {
-                w.update(item, opts);
+                w.update(item, i + aboveCount, opts);
             }
 
             if(w.root.parentNode !== root) {
@@ -91,7 +90,7 @@ function BigList(items, opts) {
     }
 
     function scrollTo(index) {
-        root.scrollTo(root.scrollHeight * index / items.length);
+        root.scrollTop = root.scrollHeight * index / items.length;
     }
 
     function destroy () {
