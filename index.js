@@ -90,7 +90,7 @@ function BigList(items, opts) {
     }
 
     function scrollTo(index) {
-        root.scrollTo(root.scrollHeight * index / items.length);
+        root.scrollTop = root.scrollHeight * index / items.length;
     }
 
     function destroy () {
