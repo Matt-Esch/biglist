@@ -39,6 +39,7 @@ function BigList(items, opts) {
     var ListItem = opts.itemTemplate;
 
     var root = this.root = opts.ordered ? element('ol') : element('ul');
+    var scrollHeight;
     var topSpacer = element('div');
     var bottomSpacer = element('div');
 
@@ -54,7 +55,8 @@ function BigList(items, opts) {
     render();
 
     function render() {
-        var scrollPercentage = root.scrollTop / root.scrollHeight;
+        scrollHeight = scrollHeight || root.scrollHeight;
+        var scrollPercentage = root.scrollTop / scrollHeight;
 
         if (isNaN(scrollPercentage)) scrollPercentage = 0;
 
@@ -90,7 +92,8 @@ function BigList(items, opts) {
     }
 
     function scrollTo(index) {
-        root.scrollTop = root.scrollHeight * index / items.length;
+        scrollHeight = scrollHeight || root.scrollHeight;
+        root.scrollTop = scrollHeight * index / items.length;
     }
 
     function destroy () {
