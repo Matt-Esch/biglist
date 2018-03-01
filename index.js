@@ -45,6 +45,7 @@ function BigList(items, opts) {
 
     root.style.height = opts.listHeight;
     root.style.overflowY = opts.forceScroll ? 'scroll' : 'auto';
+    root.style.overflowAnchor = 'none';
     root.appendChild(topSpacer);
     root.appendChild(bottomSpacer);
     listener.add(root, 'scroll', render);
